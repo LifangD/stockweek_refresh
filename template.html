@@ -1,0 +1,48 @@
+﻿<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+<title>交运行业周报部分</title>
+<style type="text/css">
+<!--
+html,body{ margin-left:50;margin-right:50;margin-top:20; height:100%}
+
+-->
+</style>
+</head>
+	<body>
+		<h1>交通运输行业周报</h1>
+		<h2>一周行情回顾</h2>
+		<p>5日涨跌幅:{% for singlestock in stocks %}{{singlestock.name}}报收{{singlestock.close}}点 ,{% if singlestock.w_change>0 %}上涨了{{singlestock.w_change}}个百分点； {% else %}下降了{{singlestock.w_change*(-1)}}个百分点； {% endif %}{% endfor %} 
+        </p> 
+        <h2>表1：市场一周涨跌幅情况</h2>
+        <table border="1">
+        <td>指数</td>
+        <td>本周收盘点位</td>
+        <td>5日涨跌幅（%）</td>
+        <td>年初至今涨跌幅（%）</td>
+ 		{% for singlestock in stocks %}
+ 		<tr>
+ 		<td>{{singlestock.name}}</td>
+        <td>{{singlestock.close}}</td>
+        <td>{{singlestock.w_change}}</td>
+        <td>{{singlestock.y_change}}</td>
+ 		</tr>
+ 		{% endfor %}
+		</table>
+		<p>申万一级行业共28个，交通运输业本周涨跌幅排名第{{rank}}位，交运板块子板块中涨幅最大的是{{c2_top.name}}板块,上涨了{{c2_top.w_change}}%,{{c2_bot.name}}板块跌幅最大,下跌了{{c2_bot.w_change*(-1)}}个百分点。</p>
+		<h2>图1：交运板块各行业一周涨跌幅情况（%）</h2>
+		<img src="class2.jpg">
+		<h2>图2：上周各行业一周涨跌幅情况（%）</h2>
+		<img src="class1.jpg">
+		<p>按照申万一级分类，交运行业共有111家上市公司，可以在wind终端获取完整数据的有104家。本周，
+			个股涨幅最大的是{{w_top.name}}，上涨{{w_top.w_change}}%；
+			跌幅最大的是{{w_bot.name}}，下跌{{w_bot.w_change*(-1)}}%。
+		
+        <p>
+        <h2>图3：本周交运行业个股涨幅前五（%）</h2>	
+        <img src="topfive.jpg">
+       	<h2>图4：本周交运行业个股跌幅前五（%）</h2>
+       	<img src="botfive.jpg
+       	<p>数据来源：wind</p>
+    </body>
+</html>
